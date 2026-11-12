@@ -1,0 +1,39 @@
+{
+  "name": "opencode-answer-date",
+  "version": "0.1.0",
+  "description": "Appends a wall-clock timestamp line to every OpenCode V2 assistant reply",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thejohnd0e/opencode-answer-date.git"
+  },
+  "homepage": "https://github.com/thejohnd0e/opencode-answer-date#readme",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "bun build src/index.ts --target=bun --format=esm --external=@opencode/plugin --outfile=dist/index.js",
+    "prepublishOnly": "bun run build && bun run typecheck"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@opencode/plugin": ">=2.2.5"
+  },
+  "peerDependenciesMeta": {
+    "@opencode/plugin": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@opencode/plugin": "^2.2.6",
+    "@types/bun": "latest",
+    "typescript": "^5.5.0"
+  }
+}
