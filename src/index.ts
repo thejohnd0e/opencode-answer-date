@@ -21,7 +21,7 @@ export default Plugin.define({
       const now = new Date()
       event.system.push({
         type: "text",
-        text: `Сейчас ${timeFmt.format(now)} · ${dateFmt.format(now)}. Закончи ответ строкой: ⏱ ${timeFmt.format(now)} · ${dateFmt.format(now)}`,
+        text: `Current time: ${timeFmt.format(now)} · ${dateFmt.format(now)}. End the reply with this exact line as the last line: ⏱ ${timeFmt.format(now)} · ${dateFmt.format(now)}`,
       })
     })
   },

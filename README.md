@@ -1,27 +1,28 @@
 # opencode-answer-date
 
-OpenCode V2 плагин: добавляет в конец **каждого ответа ассистента** строку с фактическим временем и датой завершения:
+OpenCode V2 plugin: appends a wall-clock timestamp line to the end of **every assistant reply**:
 
 ```
 ⏱ 14:23:07 · 13.11.2026
 ```
 
-## Как работает
+## How it works
 
-Серверный плагин вешает хук `context`, который перед каждым запросом к модели
-вставляет в системный контекст актуальное время (секундная точность, локаль
-`ru-RU`) и однострочное указание закончить ответ меткой времени. Метка — часть
-текста ответа: она видна в TUI, сохраняется в истории сессии и копируется
-вместе с ответом.
+A server plugin registers a `context` hook that, immediately before each model
+request, injects the current wall-clock time (second precision, `ru-RU`
+locale) into the system context along with a one-line instruction to finish the
+reply with a timestamp line. The timestamp is part of the reply text itself, so
+it is visible in the TUI, preserved in session history, and copied together
+with the reply.
 
-Расход токенов: ~25 входящих токенов на каждый вызов модели (включая
-промежуточные шаги с инструментами) и ~15 исходящих на ответ.
+Token cost: ~25 input tokens per model call (including intermediate tool-driven
+steps) and ~15 output tokens per reply.
 
-## Установка
+## Installation
 
-### Как npm-пакет
+### As an npm package
 
-В `~/.config/opencode/opencode.json(c)`:
+Add to `~/.config/opencode/opencode.json(c)`:
 
 ```jsonc
 {
@@ -29,16 +30,16 @@ OpenCode V2 плагин: добавляет в конец **каждого от
 }
 ```
 
-### Как локальный плагин
+### As a local plugin
 
-Скопируйте `src/index.ts` в `<global-config>/plugins/answer-date/index.ts` —
-OpenCode подхватит его автоматически, сборка не нужна.
+Copy `src/index.ts` to `<global-config>/plugins/answer-date/index.ts` — OpenCode
+picks it up automatically, no build required.
 
-## Формат
+## Format
 
-Формат задаётся в `src/index.ts` через `Intl.DateTimeFormat("ru-RU", ...)`;
-измените под свою локаль и пересоберите (`bun run build`).
+The format is defined in `src/index.ts` via `Intl.DateTimeFormat("ru-RU", ...)`;
+change it to match your locale and rebuild (`bun run build`).
 
-## Лицензия
+## License
 
 MIT
