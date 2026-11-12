@@ -1,5 +1,10 @@
 # opencode-answer-date
 
+[![npm version](https://img.shields.io/npm/v/opencode-answer-date.svg?style=flat-square)](https://www.npmjs.com/package/opencode-answer-date)
+[![license](https://img.shields.io/npm/l/opencode-answer-date.svg?style=flat-square)](./LICENSE)
+[![github release](https://img.shields.io/github/v/release/thejohnd0e/opencode-answer-date?style=flat-square)](https://github.com/thejohnd0e/opencode-answer-date/releases)
+[![opencode](https://img.shields.io/badge/OpenCode-V2-000000?style=flat-square)](https://opencode.ai)
+
 OpenCode V2 plugin: appends a wall-clock timestamp line to the end of **every assistant reply**:
 
 ```
